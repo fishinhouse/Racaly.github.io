@@ -27,7 +27,7 @@
 
       var box = $(html);
 
-      $('body').append(box);
+      $('.article-share-link').append(box);
     }
 
     $('.article-share-box.on').hide();
