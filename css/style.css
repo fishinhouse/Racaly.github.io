@@ -797,6 +797,7 @@ pre {
   color: #60676d; }
 
 #ds-thread #ds-reset .ds-comments-info {
+  display: none;
   padding: 10px 0; }
 
 #ds-thread #ds-reset .ds-sort {
