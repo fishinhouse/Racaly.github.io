@@ -16,7 +16,7 @@
     } else {
       var html = [
         '<div id="' + id + '" class="article-share-box">',
-          '<input class="article-share-input" value="' + url + '">',
+         
           '<div class="article-share-links">',
             
             '<a href="http://service.weibo.com/share/share.php?title=' + title + '&url=' + encodedUrl + '&searchPic=true&style=number' + '" class="article-share-weibo" target="_blank" title="Weibo"></a>',
