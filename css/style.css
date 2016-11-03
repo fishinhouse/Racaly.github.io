@@ -1441,6 +1441,8 @@ table {
 .article-share-link {
   cursor: pointer;
   float: right;
+  height: 40px;
+  line-height: 40px;
   margin-left: 20px; }
   .article-share-link:before {
     font-family: "FontAwesome";
@@ -1451,13 +1453,12 @@ table {
   /*position: absolute;*/
   display: none;
   background: #fff;
-  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
-  margin-left: -145px;
+  margin-left: 0px;
   overflow: hidden;
   z-index: 1; }
   .article-share-box.on {
-    display: block; }
+    display: inline-block; }
 
 .article-share-input {
   width: 100%;
@@ -1477,8 +1478,9 @@ table {
   background: #eee; }
 
 .article-share-element, .article-share-twitter, .article-share-facebook, .article-share-weibo, .article-share-wechat {
-  width: 50px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   display: block;
   float: left;
   position: relative;
@@ -1496,7 +1498,7 @@ table {
     margin-left: -10px;
     text-align: center; }
   .article-share-element:hover, .article-share-twitter:hover, .article-share-facebook:hover, .article-share-weibo:hover, .article-share-wechat:hover {
-    color: #fff; }
+    color: #d44137; }
 
 .article-share-twitter:before {
   content: "\f099"; }
@@ -1513,14 +1515,8 @@ table {
 .article-share-weibo:before {
   content: "\f18a"; }
 
-.article-share-weibo:hover {
-  background: #d44137; }
-
 .article-share-wechat:before {
   content: "\f1d7"; }
-
-.article-share-wechat:hover {
-  background: #38ad5a; }
 
 /* search result*/
 ul.search-result-list {

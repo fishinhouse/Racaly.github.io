@@ -30,12 +30,12 @@
       $('.article-share-link').append(box);
     }
 
-    // $('.article-share-box.on').hide();
+    $('.article-share-box.on').hide();
 
-    // box.css({
-    //   top: offset.top + 25,
-    //   left: offset.left
-    // }).addClass('on');
+    box.css({
+      top: offset.top + 25,
+      left: offset.left
+    }).addClass('on');
   // article-share
   // $('body').on('click', function(){
   //   $('.article-share-box.on').removeClass('on');
