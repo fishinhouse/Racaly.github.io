@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>金城的妖精见过米</title>
+  <subtitle>生命若给我无数张面孔，我永远选择最疼痛的一张去触摸</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://Racaly.github.io/"/>
+  <updated>2016-11-23T08:44:03.416Z</updated>
+  <id>http://Racaly.github.io/</id>
+  
+  <author>
+    <name>Racaly</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用git命令</title>
+    <link href="http://Racaly.github.io/2016/11/24/git_command_list/"/>
+    <id>http://Racaly.github.io/2016/11/24/git_command_list/</id>
+    <published>2016-11-23T16:00:00.000Z</published>
+    <updated>2016-11-23T08:44:03.416Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="新建代码仓库"><a href="#新建代码仓库" class="headerlink" title="新建代码仓库"></a>新建代码仓库</h2><ul>
+<li>在当前目录新建一个Git代码库<br>$ git init</li>
+<li>新建一个目录，将其初始化为Git代码库<br>$ git init [project-name]</li>
+<li>下载一个项目和它的整个代码历史<br>$ git clone [url]</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>　<strong>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</strong></p>
+<ul>
+<li>显示当前的Git配置<br>$ git config –list</li>
+<li>编辑Git配置文件<br>$ git config -e [–global]</li>
+<li>设置提交代码时的用户信息<br>$ git config [–global] user.name “[name]”<br>$ git config [–global] user.email “[email address]”</li>
+</ul>
+<h2 id="增加-删除文件"><a href="#增加-删除文件" class="headerlink" title="增加/删除文件"></a>增加/删除文件</h2><ul>
+<li>添加指定文件到暂存区<br>$ git add [file1] [file2] …</li>
+<li>添加指定目录到暂存区，包括子目录<br>$ git add [dir]</li>
+<li>添加当前目录的所有文件到暂存区<br>$ git add .</li>
+<li>添加每个变化前，都会要求确认</li>
+<li>对于同一个文件的多处变化，可以实现分次提交<br>$ git add -p</li>
+<li>删除工作区文件，并且将这次删除放入暂存区<br>$ git rm [file1] [file2] …</li>
+<li>停止追踪指定文件，但该文件会保留在工作区<br>$ git rm –cached [file]</li>
+<li>改名文件，并且将这个改名放入暂存区<br>$ git mv [file-original] [file-renamed]</li>
+</ul>
+<h2 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h2><ul>
+<li>提交暂存区到仓库区<br>$ git commit -m [message]</li>
+<li>提交暂存区的指定文件到仓库区<br>$ git commit [file1] [file2] … -m [message]</li>
+<li>提交工作区自上次commit之后的变化，直接到仓库区<br>$ git commit -a</li>
+<li>提交时显示所有diff信息<br>$ git commit -v</li>
+<li>使用一次新的commit，替代上一次提交</li>
+<li>如果代码没有任何新变化，则用来改写上一次commit的提交信息<br>$ git commit –amend -m [message]</li>
+<li>重做上一次commit，并包括指定文件的新变化<br>$ git commit –amend [file1] [file2] …</li>
+</ul>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><ul>
+<li>列出所有本地分支<br>$ git branch</li>
+<li>列出所有远程分支<br>$ git branch -r</li>
+<li>列出所有本地分支和远程分支<br>$ git branch -a</li>
+<li>新建一个分支，但依然停留在当前分支<br>$ git branch [branch-name]</li>
+<li>新建一个分支，并切换到该分支<br>$ git checkout -b [branch]</li>
+<li>新建一个分支，指向指定commit<br>$ git branch [branch] [commit]</li>
+<li>新建一个分支，与指定的远程分支建立追踪关系<br>$ git branch –track [branch] [remote-branch]</li>
+<li>切换到指定分支，并更新工作区<br>$ git checkout [branch-name]</li>
+<li>切换到上一个分支<br>$ git checkout -</li>
+<li>建立追踪关系，在现有分支与指定的远程分支之间<br>$ git branch –set-upstream [branch] [remote-branch]</li>
+<li>合并指定分支到当前分支<br>$ git merge [branch]</li>
+<li>选择一个commit，合并进当前分支<br>$ git cherry-pick [commit]</li>
+<li>删除分支<br>$ git branch -d [branch-name]</li>
+<li>删除远程分支<br>$ git push origin  :[branch-name]<br>$ git push origin –delete [branch-name]<br>$ git branch -dr [remote/branch]</li>
+</ul>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li>列出所有tag<br>$ git tag</li>
+<li>新建一个tag在当前commit<br>$ git tag [tag]</li>
+<li>新建一个tag在指定commit<br>$ git tag [tag] [commit]</li>
+<li>删除本地tag<br>$ git tag -d [tag]</li>
+<li>删除远程tag<br>$ git push origin :refs/tags/[tagName]</li>
+<li>查看tag信息<br>$ git show [tag]</li>
+<li>提交指定tag<br>$ git push [remote] [tag]</li>
+<li>提交所有tag<br>$ git push [remote] –tags</li>
+<li>新建一个分支，指向某个tag<br>$ git checkout -b [branch] [tag]</li>
+</ul>
+<h2 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h2><ul>
+<li>显示有变更的文件<br>$ git status</li>
+<li>显示当前分支的版本历史<br>$ git log</li>
+<li>显示commit历史，以及每次commit发生变更的文件<br>$ git log –stat</li>
+<li>搜索提交历史，根据关键词<br>$ git log -S [keyword]</li>
+<li>显示某个commit之后的所有变动，每个commit占据一行<br>$ git log [tag] HEAD –pretty=format:%s</li>
+<li>显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件<br>$ git log [tag] HEAD –grep feature</li>
+<li>显示某个文件的版本历史，包括文件改名<br>$ git log –follow [file]<br>$ git whatchanged [file]</li>
+<li>显示指定文件相关的每一次diff<br>$ git log -p [file]</li>
+<li>显示过去5次提交<br>$ git log -5 –pretty –oneline</li>
+<li>显示所有提交过的用户，按提交次数排序<br>$ git shortlog -sn</li>
+<li>显示指定文件是什么人在什么时间修改过<br>$ git blame [file]</li>
+<li>显示暂存区和工作区的差异<br>$ git diff</li>
+<li>显示暂存区和上一个commit的差异<br>$ git diff –cached [file]</li>
+<li>显示工作区与当前分支最新commit之间的差异<br>$ git diff HEAD</li>
+<li>显示两次提交之间的差异<br>$ git diff [first-branch]…[second-branch]</li>
+<li>显示今天你写了多少行代码<br>$ git diff –shortstat “@{0 day ago}”</li>
+<li>显示某次提交的元数据和内容变化<br>$ git show [commit]</li>
+<li>显示某次提交发生变化的文件<br>$ git show –name-only [commit]</li>
+<li>显示某次提交时，某个文件的内容<br>$ git show [commit]:[filename]</li>
+<li>显示当前分支的最近几次提交<br>$ git reflog</li>
+</ul>
+<h2 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h2><ul>
+<li>下载远程仓库的所有变动<br>$ git fetch [remote]</li>
+<li>显示所有远程仓库<br>$ git remote -v</li>
+<li>显示某个远程仓库的信息<br>$ git remote show [remote]</li>
+<li>增加一个新的远程仓库，并命名<br>$ git remote add [shortname] [url]</li>
+<li>取回远程仓库的变化，并与本地分支合并<br>$ git pull [remote] [branch]</li>
+<li>上传本地指定分支到远程仓库<br>$ git push [remote] [branch]</li>
+<li>强行推送当前分支到远程仓库，即使有冲突<br>$ git push [remote] –force</li>
+<li>推送所有分支到远程仓库<br>$ git push [remote] –all</li>
+</ul>
+<h2 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h2><ul>
+<li>恢复暂存区的指定文件到工作区<br>$ git checkout [file]</li>
+<li>恢复某个commit的指定文件到暂存区和工作区<br>$ git checkout [commit] [file]</li>
+<li>恢复暂存区的所有文件到工作区<br>$ git checkout .</li>
+<li>重置暂存区的指定文件，与上一次commit保持一致，但工作区不变<br>$ git reset [file]</li>
+<li>重置暂存区与工作区，与上一次commit保持一致<br>$ git reset –hard</li>
+<li>重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变<br>$ git reset [commit]</li>
+<li>重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致<br>$ git reset –hard [commit]</li>
+<li>重置当前HEAD为指定commit，但保持暂存区和工作区不变<br>$ git reset –keep [commit]</li>
+<li>新建一个commit，用来撤销指定commit<br>后者的所有变化都将被前者抵消，并且应用到当前分支<br>$ git revert [commit]</li>
+<li>暂时将未提交的变化移除，稍后再移入<br>$ git stash<br>$ git stash pop</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;新建代码仓库&quot;&gt;&lt;a href=&quot;#新建代码仓库&quot; class=&quot;headerlink&quot; title=&quot;新建代码仓库&quot;&gt;&lt;/a&gt;新建代码仓库&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;在当前目录新建一个Git代码库&lt;br&gt;$ git init&lt;/li&gt;
+&lt;li&gt;新建一个目录，将其
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://Racaly.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu安装ns2</title>
+    <link href="http://Racaly.github.io/2016/11/23/install_ns2/"/>
+    <id>http://Racaly.github.io/2016/11/23/install_ns2/</id>
+    <published>2016-11-22T16:00:00.000Z</published>
+    <updated>2016-11-23T07:02:55.702Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="下载ns-allinone-2-35"><a href="#下载ns-allinone-2-35" class="headerlink" title="下载ns-allinone-2.35"></a>下载ns-allinone-2.35</h2><blockquote>
+<p>1.去<a href="http://www.isi.edu/nsnam/ns/" target="_blank" rel="external">官网</a>下载安装包<br><strong>第一步</strong><br><img src="http://oh2r5yxfc.bkt.clouddn.com/ns2_download1.png" alt="图片加载失败"><br><strong>第二步</strong><br><img src="http://oh2r5yxfc.bkt.clouddn.com/ns2_download2.png" alt="图片加载失败"></p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>解压下载的文件并进入到加压后的目录<pre><code>tar zvxf ns-allinone-2.35.tar.gz /opt/
+cd /opt/ns-allinone-2.35
+</code></pre>2.安装依赖<pre><code>sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install build-essential autoconf automake 
+sudo apt-get install perl xgraph libxt-dev libx11-dev libxmu-dev
+</code></pre></li>
+<li>修改 ns-allinone-2.35/ns-2.35/linkstate 中 ls.h 文件的代码 ,<pre><code>  void eraseAll() { erase(baseMap::begin(), baseMap::end()); }
+</code></pre>改为：<pre><code> void eraseAll() { this-&gt;erase(baseMap::begin(), baseMap::end()); }
+</code></pre>4.开始安装，可能需要十几分钟<pre><code>sudo ./install
+</code></pre>当出现下面提示就表示安装成功了<br><img src="http://oh2r5yxfc.bkt.clouddn.com/ns2_download3.png" alt="图片加载失败"><br>5.配置环境变量<pre><code>sudo vim ~/.bashrc
+</code></pre>在最后添加<pre><code>export PATH=$PATH:/opt/ns-allinone-2.35/bin:/opt/ns-allinone-2.35/tcl8.5.10/unix:/opt/ns-allinone-2.35/tk8.5.10/unix
+export LD_LIBRARY_PATH=/opt/ns-allinone-2.35/otcl-1.14:/opt/ns-allinone-2.35/lib
+export TCL_LIBRARY=/opt/ns-allinone-2.35/tcl8.5.10/library
+</code></pre>使环境变量生效<pre><code>source ~/.bashrc
+</code></pre>6.验证<pre><code>~$ ns
+~$ %
+</code></pre>如果出现%就表示安装成功了<br>７．安装nam<pre><code>cd ns-allinone-2.35/nam-1.15
+./configure
+sudo make
+make install
+</code></pre>测试<pre><code>nam
+</code></pre>如果弹出nam console说明nam安装成功<br>8.测试simple.tcl<pre><code>cp /opt/ns-allinone-2.35/ns-2.35/tcl/ex/simple.tcl ~
+cd ~
+ns simple.tcl
+</code></pre>如果出现下面的界面，那么就全部安装成功！<br><img src="http://oh2r5yxfc.bkt.clouddn.com/ns2_download4.png" alt="图片加载失败"></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;下载ns-allinone-2-35&quot;&gt;&lt;a href=&quot;#下载ns-allinone-2-35&quot; class=&quot;headerlink&quot; title=&quot;下载ns-allinone-2.35&quot;&gt;&lt;/a&gt;下载ns-allinone-2.35&lt;/h2&gt;&lt;blockquo
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://Racaly.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chrome浏览器host配置</title>
+    <link href="http://Racaly.github.io/2016/10/13/host/"/>
+    <id>http://Racaly.github.io/2016/10/13/host/</id>
+    <published>2016-10-12T16:00:00.000Z</published>
+    <updated>2016-11-02T02:22:16.097Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Chrome浏览器host配置"><a href="#Chrome浏览器host配置" class="headerlink" title="Chrome浏览器host配置"></a>Chrome浏览器host配置</h3><h4 id="一、host文件配置"><a href="#一、host文件配置" class="headerlink" title="一、host文件配置"></a>一、host文件配置</h4><h5 id="Windows平台"><a href="#Windows平台" class="headerlink" title="Windows平台"></a>Windows平台</h5><p>1.使用文本编辑器打开： %SystemRoot%\System32\drivers\etc\hosts<br>2.将 <a href="https://raw.githubusercontent.com/racaljk/hosts/master/hosts" target="_blank" rel="external">hosts</a> 全部内容复制到上面的文件内并保存</p>
+<h5 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h5><p>1.将 hosts 全部内容复制到/etc/hosts中并保存<br>2.或者在终端执行：<br><pre><code>wget https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;racaljk&#x2F;hosts&#x2F;master&#x2F;hosts -qO &#x2F;tmp&#x2F;hosts &amp;&amp; sudo sh -c &#39;cat &#x2F;tmp&#x2F;hosts &gt; &#x2F;etc&#x2F;hosts&#39; </code></pre></p>
+<h4 id="二、Chrome配置"><a href="#二、Chrome配置" class="headerlink" title="二、Chrome配置"></a>二、Chrome配置</h4><p>1.地址栏输入：<code>chrome://net-internals/#hsts</code>,回车<br>2.<code>Input a domain name to add it to the HSTS set:</code>这一行下面的<code>Domain: [ ]</code>输入<code>www.google.com.hk</code>点 <strong>Add</strong>按钮</p>
+<h4 id="三、重启浏览器"><a href="#三、重启浏览器" class="headerlink" title="三、重启浏览器"></a>三、重启浏览器</h4><p><a href="https://github.com/racaljk/hosts" target="_blank" rel="external">原文</a>及相关问题 请访问<code>https://github.com/racaljk/hosts</code></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Chrome浏览器host配置&quot;&gt;&lt;a href=&quot;#Chrome浏览器host配置&quot; class=&quot;headerlink&quot; title=&quot;Chrome浏览器host配置&quot;&gt;&lt;/a&gt;Chrome浏览器host配置&lt;/h3&gt;&lt;h4 id=&quot;一、host文件配置&quot;&gt;&lt;
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="http://Racaly.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git忽略</title>
+    <link href="http://Racaly.github.io/2016/09/04/gitignore/"/>
+    <id>http://Racaly.github.io/2016/09/04/gitignore/</id>
+    <published>2016-09-03T16:00:00.000Z</published>
+    <updated>2016-11-02T02:22:21.925Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><p> 1.在项目的根目录下打开.gitignore文件（如果没有则新建），添加你要忽略的文件或者文件夹，例如： *.json,theme/<br> 2.清除缓存<br><pre><code>git rm -rf --cached .
+git add .</code></pre></p>
+<p>3.这时修改的.gitignore就生效了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;gitignore&quot;&gt;&lt;a href=&quot;#gitignore&quot; class=&quot;headerlink&quot; title=&quot;.gitignore&quot;&gt;&lt;/a&gt;.gitignore&lt;/h3&gt;&lt;p&gt; 1.在项目的根目录下打开.gitignore文件（如果没有则新建），添加你要忽
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://Racaly.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Javascript闭包</title>
+    <link href="http://Racaly.github.io/2016/08/26/%E9%97%AD%E5%8C%85/"/>
+    <id>http://Racaly.github.io/2016/08/26/闭包/</id>
+    <published>2016-08-25T16:00:00.000Z</published>
+    <updated>2016-11-02T02:22:49.493Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Javascript闭包"><a href="#Javascript闭包" class="headerlink" title="Javascript闭包"></a>Javascript闭包</h3><p>闭包是指能够访问自由变量的函数 (变量在本地使用，但在闭包中定义)。换句话说，定义在闭包中的函数可以“记忆”它被创建时候的环境。</p>
+<p><strong>先看下面这个函数</strong></p>
+<pre><code>function foo() {
+  var city = &quot;西安&quot;;
+  function getCity() {
+    console.log(city);
+  }
+  getCity();
+}
+foo();&#x2F;&#x2F;控制台输出&#39;西安&#39;</code></pre>
+<p>函数 foo() 创建了一个局部变量 city，然后定义了名为 getCity() 的函数。 getCity() 是一个内部函数——定义于 foo() 之内且仅在该函数体内可用。getCity() 没有任何自己的局部变量，然而它可以访问到外部函数的变量，即可以使用父函数中声明的 city 变量。</p>
+<h4 id="一、闭包"><a href="#一、闭包" class="headerlink" title="一、闭包"></a>一、闭包</h4><p><strong>再看这样一个函数</strong><br><pre><code>function foo1() {
+  var city = &quot;西安&quot;;
+  function getCity() {
+    console.log(city);
+  }
+  return getCity;
+}
+
+var foo2 = foo1();
+foo2();&#x2F;&#x2F;控制台输出西安</code></pre></p>
+<p> 运行这段代码的效果和之前的 foo() 示例完全一样：字符串 “西安” 将被显示在一个 控制台中。其中的不同也是有意思的地方在于 getCity()内部函数在执行前被从其外围函数foo1中返回了。</p>
+<p>这段代码看起来别扭却能正常运行。通常，函数中的局部变量仅在函数的执行期间可用。一旦foo1()执行过后，我们会很合理的认为 city变量将不再可用。虽然代码运行的没问题，但实际并不是这样的。</p>
+<p>这个谜题的答案是foo1变成一个闭包了。闭包是一种特殊的对象。它由两部分构成：函数，以及创建该函数的环境。环境由闭包创建时在作用域中的任何局部变量组成。在我们的例子中，foo1是一个闭包，由getCity函数和闭包创建时存在的”西安”字符串形成。</p>
+<p>下面是一个更有意思的示例 — makeAdder 函数：</p>
+<pre><code>
+function makeAdder(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+var add5 = makeAdder(5);
+var add10 = makeAdder(10);
+
+console.log(add5(2));  &#x2F;&#x2F; 7
+console.log(add10(2)); &#x2F;&#x2F; 12</code></pre>
+<p>在这个示例中，我们定义了 makeAdder(x) 函数：带有一个参数 x 并返回一个新的函数。返回的函数带有一个参数 y，并返回 x 和 y 的和。</p>
+<p>从本质上讲，makeAdder 是一个函数工厂 — 创建将指定的值和它的参数求和的函数，在上面的示例中，我们使用函数工厂创建了两个新函数 — 一个将其参数和 5 求和，另一个和 10 求和。</p>
+<p>add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存了不同的环境。在 add5 的环境中，x 为 5。而在 add10 中，x 则为 10。</p>
+<p>实用的闭包<br>理论就是这些了 — 可是闭包确实有用吗？让我们看看闭包的实践意义。闭包允许将函数与其所操作的某些数据（环境）关连起来。这显然类似于面向对象编程。在面对象编程中，对象允许我们将某些数据（对象的属性）与一个或者多个方法相关联。</p>
+<p>因而，一般说来，可以使用只有一个方法的对象的地方，都可以使用闭包。</p>
+<p>在 Web 中，您可能想这样做的情形非常普遍。大部分我们所写的 Web JavaScript 代码都是事件驱动的 — 定义某种行为，然后将其添加到用户触发的事件之上（比如点击或者按键）。我们的代码通常添加为回调：响应事件而执行的函数。</p>
+<p>以下是一个实际的示例：假设我们想在页面上添加一些可以调整字号的按钮。一种方法是以像素为单位指定 body 元素的 font-size，然后通过相对的 em 单位设置页面中其它元素（例如页眉）的字号：</p>
+<p>body {<br>  font-family: Helvetica, Arial, sans-serif;<br>  font-size: 12px;<br>}</p>
+<p>h1 {<br>  font-size: 1.5em;<br>}<br>h2 {<br>  font-size: 1.2em;<br>}<br>我们的交互式的文本尺寸按钮可以修改 body 元素的 font-size 属性，而由于我们使用相对的单位，页面中的其它元素也会相应地调整。</p>
+<p>以下是 JavaScript：</p>
+<p>function makeSizer(size) {<br>  return function() {<br>    document.body.style.fontSize = size + ‘px’;<br>  };<br>}</p>
+<p>var size12 = makeSizer(12);<br>var size14 = makeSizer(14);<br>var size16 = makeSizer(16);<br>size12，size14 和 size16 为将 body 文本相应地调整为 12，14，16 像素的函数。我们可以将它们分别添加到按钮上（这里是链接）。如下所示：</p>
+<p>document.getElementById(‘size-12’).onclick = size12;<br>document.getElementById(‘size-14’).onclick = size14;<br>document.getElementById(‘size-16’).onclick = size16;<br><a href="#" id="size-12">12</a><br><a href="#" id="size-14">14</a><br><a href="#" id="size-16">16</a></p>
+<p>用闭包模拟私有方法<br>诸如 Java 在内的一些语言支持将方法声明为私有的，即它们只能被同一个类中的其它方法所调用。</p>
+<p>对此，JavaScript 并不提供原生的支持，但是可以使用闭包模拟私有方法。私有方法不仅仅有利于限制对代码的访问：还提供了管理全局命名空间的强大能力，避免非核心的方法弄乱了代码的公共接口部分。</p>
+<p>下面的示例展现了如何使用闭包来定义公共函数，且其可以访问私有函数和变量。这个方式也称为 模块模式（module pattern）：</p>
+<p>var Counter = (function() {<br>  var privateCounter = 0;<br>  function changeBy(val) {<br>    privateCounter += val;<br>  }<br>  return {<br>    increment: function() {<br>      changeBy(1);<br>    },<br>    decrement: function() {<br>      changeBy(-1);<br>    },<br>    value: function() {<br>      return privateCounter;<br>    }<br>  }<br>})();</p>
+<p>console.log(Counter.value()); /<em> logs 0 </em>/<br>Counter.increment();<br>Counter.increment();<br>console.log(Counter.value()); /<em> logs 2 </em>/<br>Counter.decrement();<br>console.log(Counter.value()); /<em> logs 1 </em>/<br>这里有很多细节。在以往的示例中，每个闭包都有它自己的环境；而这次我们只创建了一个环境，为三个函数所共享：Counter.increment，Counter.decrement 和 Counter.value。</p>
+<p>该共享环境创建于一个匿名函数体内，该函数一经定义立刻执行。环境中包含两个私有项：名为 privateCounter 的变量和名为 changeBy 的函数。 这两项都无法在匿名函数外部直接访问。必须通过匿名包装器返回的三个公共函数访问。</p>
+<p>这三个公共函数是共享同一个环境的闭包。多亏 JavaScript 的词法范围的作用域，它们都可以访问 privateCounter 变量和 changeBy 函数。</p>
+<p>您应该注意到了，我们定义了一个匿名函数用于创建计数器，然后直接调用该函数，并将返回值赋给 Counter 变量。也可以将这个函数保存到另一个变量中，以便创建多个计数器。</p>
+<p>var makeCounter = function() {<br>  var privateCounter = 0;<br>  function changeBy(val) {<br>    privateCounter += val;<br>  }<br>  return {<br>    increment: function() {<br>      changeBy(1);<br>    },<br>    decrement: function() {<br>      changeBy(-1);<br>    },<br>    value: function() {<br>      return privateCounter;<br>    }<br>  }<br>};</p>
+<p>var Counter1 = makeCounter();<br>var Counter2 = makeCounter();<br>console.log(Counter1.value()); /<em> logs 0 </em>/<br>Counter1.increment();<br>Counter1.increment();<br>console.log(Counter1.value()); /<em> logs 2 </em>/<br>Counter1.decrement();<br>console.log(Counter1.value()); /<em> logs 1 </em>/<br>console.log(Counter2.value()); /<em> logs 0 </em>/<br>请注意两个计数器是如何维护它们各自的独立性的。每次调用 makeCounter() 函数期间，其环境是不同的。每次调用中， privateCounter 中含有不同的实例。</p>
+<p>这种形式的闭包提供了许多通常由面向对象编程U所享有的益处，尤其是数据隐藏和封装。</p>
+<p>在循环中创建闭包：一个常见错误<br>在 JavaScript 1.7 引入 let 关键字 之前，闭包的一个常见的问题发生于在循环中创建闭包。参考下面的示例：</p>
+<p></p><p id="help">Helpful notes will appear here</p><p></p>
+<p></p><p>E-mail: <input type="text" id="email" name="email"></p><p></p>
+<p></p><p>Name: <input type="text" id="name" name="name"></p><p></p>
+<p></p><p>Age: <input type="text" id="age" name="age"></p><br>function showHelp(help) {<br>  document.getElementById(‘help’).innerHTML = help;<br>}<p></p>
+<p>function setupHelp() {<br>  var helpText = [<br>      {‘id’: ‘email’, ‘help’: ‘Your e-mail address’},<br>      {‘id’: ‘name’, ‘help’: ‘Your full name’},<br>      {‘id’: ‘age’, ‘help’: ‘Your age (you must be over 16)’}<br>    ];</p>
+<p>  for (var i = 0; i &lt; helpText.length; i++) {<br>    var item = helpText[i];<br>    document.getElementById(item.id).onfocus = function() {<br>      showHelp(item.help);<br>    }<br>  }<br>}</p>
+<p>setupHelp();</p>
+<p>数组 helpText 中定义了三个有用的提示信息，每一个都关联于对应的文档中的输入域的 ID。通过循环这三项定义，依次为每一个输入域添加了一个 onfocus 事件处理函数，以便显示帮助信息。</p>
+<p>运行这段代码后，您会发现它没有达到想要的效果。无论焦点在哪个输入域上，显示的都是关于年龄的消息。</p>
+<p>该问题的原因在于赋给 onfocus 是闭包（setupHelp）中的匿名函数而不是闭包对象；在闭包（setupHelp）中一共创建了三个匿名函数，但是它们都共享同一个环境（item）。在 onfocus 的回调被执行时，循环早已经完成，且此时 item 变量（由所有三个闭包所共享）已经指向了 helpText 列表中的最后一项。</p>
+<p>解决这个问题的一种方案是使onfocus指向一个新的闭包对象。</p>
+<p>function showHelp(help) {<br>  document.getElementById(‘help’).innerHTML = help;<br>}</p>
+<p>function makeHelpCallback(help) {<br>  return function() {<br>    showHelp(help);<br>  };<br>}</p>
+<p>function setupHelp() {<br>  var helpText = [<br>      {‘id’: ‘email’, ‘help’: ‘Your e-mail address’},<br>      {‘id’: ‘name’, ‘help’: ‘Your full name’},<br>      {‘id’: ‘age’, ‘help’: ‘Your age (you must be over 16)’}<br>    ];</p>
+<p>  for (var i = 0; i &lt; helpText.length; i++) {<br>    var item = helpText[i];<br>    document.getElementById(item.id).onfocus = makeHelpCallback(item.help);<br>  }<br>}</p>
+<p>setupHelp();</p>
+<p>这段代码可以如我们所期望的那样工作。所有的回调不再共享同一个环境， makeHelpCallback 函数为每一个回调创建一个新的环境。在这些环境中，help 指向 helpText 数组中对应的字符串。</p>
+<p>性能考量<br>如果不是因为某些特殊任务而需要闭包，在没有必要的情况下，在其它函数中创建函数是不明智的，因为闭包对脚本性能具有负面影响，包括处理速度和内存消耗。</p>
+<p>例如，在创建新的对象或者类时，方法通常应该关联于对象的原型，而不是定义到对象的构造器中。原因是这将导致每次构造器被调用，方法都会被重新赋值一次（也就是说，为每一个对象的创建）。</p>
+<p>考虑以下虽然不切实际但却说明问题的示例：</p>
+<p>function MyObject(name, message) {<br>  this.name = name.toString();<br>  this.message = message.toString();<br>  this.getName = function() {<br>    return this.name;<br>  };</p>
+<p>  this.getMessage = function() {<br>    return this.message;<br>  };<br>}<br>上面的代码并未利用到闭包的益处，因此，应该修改为如下常规形式：</p>
+<p>function MyObject(name, message) {<br>  this.name = name.toString();<br>  this.message = message.toString();<br>}<br>MyObject.prototype = {<br>  getName: function() {<br>    return this.name;<br>  },<br>  getMessage: function() {<br>    return this.message;<br>  }<br>};<br>或者改成：</p>
+<p>function MyObject(name, message) {<br>  this.name = name.toString();<br>  this.message = message.toString();<br>}<br>MyObject.prototype.getName = function() {<br>  return this.name;<br>};<br>MyObject.prototype.getMessage = function() {<br>  return this.message;<br>};<br>在前面的两个示例中，继承的原型可以为所有对象共享，且不必在每一次创建对象时定义方法。参见 对象模型的细节 一章可以了解更为详细的信息。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Javascript闭包&quot;&gt;&lt;a href=&quot;#Javascript闭包&quot; class=&quot;headerlink&quot; title=&quot;Javascript闭包&quot;&gt;&lt;/a&gt;Javascript闭包&lt;/h3&gt;&lt;p&gt;闭包是指能够访问自由变量的函数 (变量在本地使用，但在闭包中
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://Racaly.github.io/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>制作一个进入项目目录的小脚本</title>
+    <link href="http://Racaly.github.io/2016/07/13/into-project-shell/"/>
+    <id>http://Racaly.github.io/2016/07/13/into-project-shell/</id>
+    <published>2016-07-12T16:00:00.000Z</published>
+    <updated>2016-11-02T02:22:20.285Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>&emsp;&emsp;在我的项目文件夹里有四个不同的项目，/app/project/,项目文件夹分别为testa，testb，testc，testd。每次启动ubuntu后我要进入第一个项目就需要运行cd app/project/testa,git statua 。所以需要一个自定义的命令可以是我直接进入指定的项目目录，并执行一次git status。因为我是希望根据我传的参数进入指定的目录，会需要一些判断。所以单纯使用alias有点不太妥当，这里就使用alias 和shell 脚本来实现这个功能。</p>
+<h3 id="写一个简单的shell脚本"><a href="#写一个简单的shell脚本" class="headerlink" title="写一个简单的shell脚本"></a>写一个简单的shell脚本</h3><p>1.新建一个into_project.sh文件：<br>    <pre><code>#!&#x2F;bin&#x2F;bash
+#声明一个关联数组并赋值
+declare -A project
+project[a]=~&#x2F;app&#x2F;project&#x2F;testa&#x2F;
+project[b]=~&#x2F;app&#x2F;project&#x2F;testb&#x2F;
+project[c]=~&#x2F;app&#x2F;project&#x2F;testc&#x2F;
+project[d]=~&#x2F;app&#x2F;project&#x2F;testd&#x2F; </code></pre><br>&emsp;&emsp;至于什么叫关联数组或者关联数组如何定义，请自行google搜索shell脚本的关联数组，在这里使用关联数组是因为需要下标可以是字符串的数组。然后给数组赋值</p>
+<p>2.完整代码，实现功能<br>    <pre><code>#!&#x2F;usr&#x2F;bin&#x2F;
+#项目目录
+declare -A project
+project[a]=~&#x2F;app&#x2F;project&#x2F;testa&#x2F;
+project[b]=~&#x2F;app&#x2F;project&#x2F;testb&#x2F;
+project[c]=~&#x2F;app&#x2F;project&#x2F;testc&#x2F;
+project[d]=~&#x2F;app&#x2F;project&#x2F;testd&#x2F;
+falg=false     #flag默认为false
+if [ x$1 != x ]; then      #$1为传进来的参数，这里判断它是否为空
+	for key in ${(k)project}; do     #循环这个关联数组的key
+		 
+		if [ &quot;$1&quot;x = &quot;$key&quot;x ]; then   #判断传进来的参数是否和里边的其中一个相等
+			falg=true   #如果相等，flag为true
+			break   #结束循环
+		fi
+	done
+	if $falg; then     #如果falg为true 执行这里边的内容
+		echo &quot;您已进入$project[$1]项目&quot; 
+		cd $project[$1]      #进入刚才找到的那个目录
+  	git status      #运行git status
+  else    #否则，根据传进来的参数没找到对应的项目
+  	echo &quot;没有这个项目，项目列表：&quot; 
+  	for key in ${(k)project}; do printf &quot;名称:%-5s %-6s\n&quot; $key $project[$key]; done    #遍历project数组并输出，以提示
+  fi
+else  #如果$1为空，没有传参数
+    echo &quot;请指定一个项目！项目列表：&quot;
+    for key in ${(k)project}; do printf &quot;名称:%-5s %-6s\n&quot; $key $project[$key]; done     #遍历project数组并输出，以提示
+fi</code></pre></p>
+<h3 id="定义自定义命令"><a href="#定义自定义命令" class="headerlink" title="定义自定义命令"></a>定义自定义命令</h3><p>1.测试<br>&emsp;&emsp;现在需要一个命令来调用这个脚本，当然，可以先测试一下。<br>    <pre><code>username$ &#x2F;bin&#x2F;bash into_project.sh a</code></pre><br>&emsp;&emsp;输出如下：</p>
+<blockquote>
+<p>  username$<br>    您已进入/home/<em>*</em>/project/testa/项目<br>    位于分支 master<br>    您的分支与上游分支 ‘origin/master’ 一致。<br>    无文件要提交，干净的工作区<br>    username$</p>
+</blockquote>
+<p>可以发现，脚本运行成功了，但是当前shell并没有进入指定的文夹里，因为运行into_project.sh时，会新启一个shell脚本，执行完毕后关闭，所以需要这么执行：<br>    <pre><code>username$ source into_project.sh a</code></pre><br>&emsp;&emsp;输出如下：</p>
+<blockquote>
+<p>  username$<br>    您已进入/home/<strong>*/project/testa/项目<br>    位于分支 master<br>    您的分支与上游分支 ‘origin/master’ 一致。<br>    无文件要提交，干净的工作区<br>    username:~/project/testa/$<br>2.定义命令<br>&emsp;&emsp;ubuntu可以使用alias来将现有的命令自定义，相当于起了一个别名<br>如</strong>alias cl = “cd project/texta”<strong>.alias 根本就不支持传递命令行参数。不过，我们可以变通的解决这个问题，即定义函数。<br> <pre><code>into=&#39;into() { source &#x2F;home&#x2F;zy&#x2F;into_project.sh ;}; into&#39;</code></pre><br>&emsp;&emsp;但是这个命令在用户关闭shell进程后就失效了。我用的是oh-my-zsh，所以打开</strong>~/.zshrc文件，将刚才的命令添加进去，重启或者source ~/.zshrc,这样这个命令就可以使用了</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h3&gt;&lt;p&gt;&amp;emsp;&amp;emsp;在我的项目文件夹里有四个不同的项目，/app/project/,项目文件夹分别为testa，testb，testc，
+    
+    </summary>
+    
+    
+      <category term="shell" scheme="http://Racaly.github.io/tags/shell/"/>
+    
+  </entry>
+  
+</feed>

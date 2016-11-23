@@ -255,6 +255,15 @@
     
     
     
+    <!-- Busuanzi Views -->
+    <a class="post_share-link" href="#">
+        <li class="mdl-menu__item">
+            <span id="busuanzi_container_page_pv">
+                <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+            </span>
+        </li>
+    </a>
+    
     
     <!-- Share Twitter -->
     <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Chrome浏览器host配置&url=http://Racaly.github.io//2016/10/13/host/index.html&via=Racaly" target="_blank">
@@ -281,7 +290,7 @@
 				
 
                 <!-- Post Content -->
-                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+                <div id="post-content" class="markdown-Coding mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
 		<h3 id="Chrome浏览器host配置"><a href="#Chrome浏览器host配置" class="headerlink" title="Chrome浏览器host配置"></a>Chrome浏览器host配置</h3><h4 id="一、host文件配置"><a href="#一、host文件配置" class="headerlink" title="一、host文件配置"></a>一、host文件配置</h4><h5 id="Windows平台"><a href="#Windows平台" class="headerlink" title="Windows平台"></a>Windows平台</h5><p>1.使用文本编辑器打开： %SystemRoot%\System32\drivers\etc\hosts<br>2.将 <a href="https://raw.githubusercontent.com/racaljk/hosts/master/hosts" target="_blank" rel="external">hosts</a> 全部内容复制到上面的文件内并保存</p>
 <h5 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h5><p>1.将 hosts 全部内容复制到/etc/hosts中并保存<br>2.或者在终端执行：<br><pre><code>wget https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;racaljk&#x2F;hosts&#x2F;master&#x2F;hosts -qO &#x2F;tmp&#x2F;hosts &amp;&amp; sudo sh -c &#39;cat &#x2F;tmp&#x2F;hosts &gt; &#x2F;etc&#x2F;hosts&#39; </code></pre></p>
@@ -298,6 +307,25 @@
 
                 <!-- Post Comments -->
                 
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #039BE5 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #039BE5 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #039BE5 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+        <div class="ds-thread" data-thread-key="Chrome浏览器host配置" data-url="http://Racaly.github.io//2016/10/13/host/index.html"></div>
+    <!-- 多说评论框 end -->
+</div>
+
 
 
 				
@@ -611,6 +639,24 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"racaly"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
 
 
 
@@ -618,6 +664,99 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+	<script>
+	var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                    return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        str += "<li><a href='"+ data_url +"' class='search-result-title' target='_blank'>"+ data_title;
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out characters
+                            var start = first_occur - 6;
+                            var end = first_occur + 6;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 10;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substr(start, end); 
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<em class=\"search-keyword\">"+keyword+"</em>");
+                            })
+                            str += "<p class=\"search-result\">" + match_content +"...</p>" +"</a>";
+                        }
+                    }
+                })
+                $resultContent.innerHTML = str;
+            })
+        }
+    })
+}
+</script>
+
+	<script>
+		var search_path = "search.xml";
+		if (search_path.length == 0) {
+		search_path = "search.xml";
+		}
+		var path = "/" + search_path;
+		searchFunc(path, 'search', 'local-search-result');
+	</script>
 
             </main>
         </div>
