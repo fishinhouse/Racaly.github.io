@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        制作一个进入项目目录的小脚本 | 金城的妖精见过米
+        ubuntu安装ns2 | 金城的妖精见过米
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://Racaly.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="制作一个进入项目目录的小脚本 | 金城的妖精见过米">
+    <meta property="og:title" content="ubuntu安装ns2 | 金城的妖精见过米">
     <meta property="og:description" content="null">
     
      <!--[if lte IE 9]>
@@ -204,7 +204,7 @@
 		
 	
         <p class="article-headline-p">
-            制作一个进入项目目录的小脚本
+            ubuntu安装ns2
         </p>
     </div>
 
@@ -222,7 +222,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Racaly</strong>
-        <span>7月 13, 2016</span>
+        <span>11月 23, 2016</span>
     </div>
     
     <div class="section-spacer"></div>
@@ -242,7 +242,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/shell/">shell</a>
+        <a class="post_tag-link" href="/tags/其他/">其他</a>
     </ul>
     
     <!-- Share -->
@@ -257,21 +257,21 @@
     
     
     <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=制作一个进入项目目录的小脚本&url=http://Racaly.github.io//2016/07/13/into-project-shell/index.html&via=Racaly" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=ubuntu安装ns2&url=http://Racaly.github.io//2016/11/23/install_ns2/index.html&via=Racaly" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
     </a>
     
     <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=http://Racaly.github.io//2016/07/13/into-project-shell/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://Racaly.github.io//2016/11/23/install_ns2/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
     </a>
     
     <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=制作一个进入项目目录的小脚本&url=http://Racaly.github.io//2016/07/13/into-project-shell/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ubuntu安装ns2&url=http://Racaly.github.io//2016/11/23/install_ns2/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -283,50 +283,37 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>&emsp;&emsp;在我的项目文件夹里有四个不同的项目，/app/project/,项目文件夹分别为testa，testb，testc，testd。每次启动ubuntu后我要进入第一个项目就需要运行cd app/project/testa,git statua 。所以需要一个自定义的命令可以是我直接进入指定的项目目录，并执行一次git status。因为我是希望根据我传的参数进入指定的目录，会需要一些判断。所以单纯使用alias有点不太妥当，这里就使用alias 和shell 脚本来实现这个功能。</p>
-<h3 id="写一个简单的shell脚本"><a href="#写一个简单的shell脚本" class="headerlink" title="写一个简单的shell脚本"></a>写一个简单的shell脚本</h3><p>1.新建一个into_project.sh文件：<br>    <pre><code>#!&#x2F;bin&#x2F;bash
-#声明一个关联数组并赋值
-declare -A project
-project[a]=~&#x2F;app&#x2F;project&#x2F;testa&#x2F;
-project[b]=~&#x2F;app&#x2F;project&#x2F;testb&#x2F;
-project[c]=~&#x2F;app&#x2F;project&#x2F;testc&#x2F;
-project[d]=~&#x2F;app&#x2F;project&#x2F;testd&#x2F; </code></pre><br>&emsp;&emsp;至于什么叫关联数组或者关联数组如何定义，请自行google搜索shell脚本的关联数组，在这里使用关联数组是因为需要下标可以是字符串的数组。然后给数组赋值</p>
-<p>2.完整代码，实现功能<br>    <pre><code>#!&#x2F;usr&#x2F;bin&#x2F;
-#项目目录
-declare -A project
-project[a]=~&#x2F;app&#x2F;project&#x2F;testa&#x2F;
-project[b]=~&#x2F;app&#x2F;project&#x2F;testb&#x2F;
-project[c]=~&#x2F;app&#x2F;project&#x2F;testc&#x2F;
-project[d]=~&#x2F;app&#x2F;project&#x2F;testd&#x2F;
-falg=false     #flag默认为false
-if [ x$1 != x ]; then      #$1为传进来的参数，这里判断它是否为空
-	for key in ${(k)project}; do     #循环这个关联数组的key
-		 
-		if [ &quot;$1&quot;x = &quot;$key&quot;x ]; then   #判断传进来的参数是否和里边的其中一个相等
-			falg=true   #如果相等，flag为true
-			break   #结束循环
-		fi
-	done
-	if $falg; then     #如果falg为true 执行这里边的内容
-		echo &quot;您已进入$project[$1]项目&quot; 
-		cd $project[$1]      #进入刚才找到的那个目录
-  	git status      #运行git status
-  else    #否则，根据传进来的参数没找到对应的项目
-  	echo &quot;没有这个项目，项目列表：&quot; 
-  	for key in ${(k)project}; do printf &quot;名称:%-5s %-6s\n&quot; $key $project[$key]; done    #遍历project数组并输出，以提示
-  fi
-else  #如果$1为空，没有传参数
-    echo &quot;请指定一个项目！项目列表：&quot;
-    for key in ${(k)project}; do printf &quot;名称:%-5s %-6s\n&quot; $key $project[$key]; done     #遍历project数组并输出，以提示
-fi</code></pre></p>
-<h3 id="定义自定义命令"><a href="#定义自定义命令" class="headerlink" title="定义自定义命令"></a>定义自定义命令</h3><p>1.测试<br>&emsp;&emsp;现在需要一个命令来调用这个脚本，当然，可以先测试一下。<br>    <pre><code>username$ &#x2F;bin&#x2F;bash into_project.sh a</code></pre><br>&emsp;&emsp;输出如下：</p>
-<blockquote>
-<p>  username$<br>    您已进入/home/<em>*</em>/project/testa/项目<br>    位于分支 master<br>    您的分支与上游分支 ‘origin/master’ 一致。<br>    无文件要提交，干净的工作区<br>    username$</p>
+		<h2 id="下载ns-allinone-2-35"><a href="#下载ns-allinone-2-35" class="headerlink" title="下载ns-allinone-2.35"></a>下载ns-allinone-2.35</h2><blockquote>
+<p>1.去<a href="http://www.isi.edu/nsnam/ns/" target="_blank" rel="external">官网</a>下载安装包<br><strong>第一步</strong><br><img src="http://oh2r5yxfc.bkt.clouddn.com/ns2_download1.png" alt="图片加载失败"><br><strong>第二步</strong><br><img src="http://oh2r5yxfc.bkt.clouddn.com/ns2_download2.png" alt="图片加载失败"></p>
 </blockquote>
-<p>可以发现，脚本运行成功了，但是当前shell并没有进入指定的文夹里，因为运行into_project.sh时，会新启一个shell脚本，执行完毕后关闭，所以需要这么执行：<br>    <pre><code>username$ source into_project.sh a</code></pre><br>&emsp;&emsp;输出如下：</p>
-<blockquote>
-<p>  username$<br>    您已进入/home/<strong>*/project/testa/项目<br>    位于分支 master<br>    您的分支与上游分支 ‘origin/master’ 一致。<br>    无文件要提交，干净的工作区<br>    username:~/project/testa/$<br>2.定义命令<br>&emsp;&emsp;ubuntu可以使用alias来将现有的命令自定义，相当于起了一个别名<br>如</strong>alias cl = “cd project/texta”<strong>.alias 根本就不支持传递命令行参数。不过，我们可以变通的解决这个问题，即定义函数。<br> <pre><code>into=&#39;into() { source &#x2F;home&#x2F;zy&#x2F;into_project.sh ;}; into&#39;</code></pre><br>&emsp;&emsp;但是这个命令在用户关闭shell进程后就失效了。我用的是oh-my-zsh，所以打开</strong>~/.zshrc文件，将刚才的命令添加进去，重启或者source ~/.zshrc,这样这个命令就可以使用了</p>
-</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>解压下载的文件并进入到加压后的目录<pre><code>tar zvxf ns-allinone-2.35.tar.gz /opt/
+cd /opt/ns-allinone-2.35
+</code></pre>2.安装依赖<pre><code>sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install build-essential autoconf automake 
+sudo apt-get install perl xgraph libxt-dev libx11-dev libxmu-dev
+</code></pre></li>
+<li>修改 ns-allinone-2.35/ns-2.35/linkstate 中 ls.h 文件的代码 ,<pre><code>  void eraseAll() { erase(baseMap::begin(), baseMap::end()); }
+</code></pre>改为：<pre><code> void eraseAll() { this-&gt;erase(baseMap::begin(), baseMap::end()); }
+</code></pre>4.开始安装，可能需要十几分钟<pre><code>sudo ./install
+</code></pre>当出现下面提示就表示安装成功了<br><img src="http://oh2r5yxfc.bkt.clouddn.com/ns2_download3.png" alt="图片加载失败"><br>5.配置环境变量<pre><code>sudo vim ~/.bashrc
+</code></pre>在最后添加<pre><code>export PATH=$PATH:/opt/ns-allinone-2.35/bin:/opt/ns-allinone-2.35/tcl8.5.10/unix:/opt/ns-allinone-2.35/tk8.5.10/unix
+export LD_LIBRARY_PATH=/opt/ns-allinone-2.35/otcl-1.14:/opt/ns-allinone-2.35/lib
+export TCL_LIBRARY=/opt/ns-allinone-2.35/tcl8.5.10/library
+</code></pre>使环境变量生效<pre><code>source ~/.bashrc
+</code></pre>6.验证<pre><code>~$ ns
+~$ %
+</code></pre>如果出现%就表示安装成功了<br>７．安装nam<pre><code>cd ns-allinone-2.35/nam-1.15
+./configure
+sudo make
+make install
+</code></pre>测试<pre><code>nam
+</code></pre>如果弹出nam console说明nam安装成功<br>8.测试simple.tcl<pre><code>cp /opt/ns-allinone-2.35/ns-2.35/tcl/ex/simple.tcl ~
+cd ~
+ns simple.tcl
+</code></pre>如果出现下面的界面，那么就全部安装成功！<br><img src="http://oh2r5yxfc.bkt.clouddn.com/ns2_download4.png" alt="图片加载失败"></li>
+</ol>
 
 	
 	
@@ -349,7 +336,7 @@ fi</code></pre></p>
     
     <!-- Prev Nav -->
     
-        <a href="/2016/08/26/闭包/" id="post_nav-newer" class="prev-content">
+        <a href="/2016/11/24/git_command_list/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -362,6 +349,14 @@ fi</code></pre></p>
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2016/10/13/host/" id="post_nav-older" class="next-content">
+            下一篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
         </div>
