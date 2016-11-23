@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        Chrome浏览器host配置 | 金城的妖精见过米
+        标签云 | 金城的妖精见过米
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://Racaly.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Chrome浏览器host配置 | 金城的妖精见过米">
+    <meta property="og:title" content="标签云 | 金城的妖精见过米">
     <meta property="og:description" content="null">
     
      <!--[if lte IE 9]>
@@ -180,152 +180,52 @@
 
 <!-- Layouts -->
 
-    <!-- Post Module -->
-    <div class="material-post_container">
-        <div class="material-post mdl-grid">
-            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-
-                <!-- Post Header(Thumbnail & Title) -->
-                
-	<!-- Paradox Post Header -->
+    <!-- Tags Cloud -->
+	<style>
+	#bottom{
+		position: relative;
+	}
 	
-		
-			<!-- Random Thumbnail -->
-			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-				<script>
-    
-    var randomNum;
-    randomNum = Math.floor(Math.random() * 5 + 1);
-    
-    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
-    
+	@media screen and (max-width: 480px){
+		.material-tagscloud{
+			margin: 6em 2em 0;
+		}
+	}
+	
+	.material-tagscloud a{
+		padding: 10px;
+		line-height: 40px;
+		white-space: nowrap;
+		transition: .6s;
+	}
+	.material-tagscloud a:hover{
+		transition: .6s;
+		color: #FAFAFA !important;
+    	background: #9E9E9E;
+	}
+</style>
+
+<div class=" material-tagscloud">
+	<div class="material-post mdl-grid">
+		<a href="/tags/git/" style="font-size: 16px; color: #757575">git</a> <a href="/tags/javascript/" style="font-size: 16px; color: #757575">javascript</a> <a href="/tags/shell/" style="font-size: 16px; color: #757575">shell</a> <a href="/tags/其他/" style="font-size: 16px; color: #757575">其他</a>
+	</div>
+</div>
+
+
+<script>
+	var adjustFooter = function(){
+		if( ($("#bottom").offset().top + $("#bottom").outerHeight() ) < $(window).height() ){
+			var footerBottom = $(window).height() - $("#bottom").outerHeight() - $("#bottom").offset().top;
+//			console.log(footerBottom);
+			$("#bottom").css("bottom", "-" + footerBottom + "px");
+		}
+	};
+	
+	$(document).ready(function(){
+		adjustFooter();
+	});
 </script>
 
-		
-	
-        <p class="article-headline-p">
-            Chrome浏览器host配置
-        </p>
-    </div>
-
-	
-
-				
-				
-					<!-- Paradox Post Info -->
-					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-    
-    <!-- Author Avatar -->
-    <div id="author-avatar">
-        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
-    </div>
-    <!-- Author Name & Date -->
-    <div>
-        <strong>Racaly</strong>
-        <span>10月 13, 2016</span>
-    </div>
-    
-    <div class="section-spacer"></div>
-	
-    <!-- Favorite -->
-<!--
-    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
-        <i class="material-icons" role="presentation">favorite</i>
-        <span class="visuallyhidden">favorites</span>
-    </button>
--->
-    
-    <!-- Tags (bookmark) -->
-    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-    </button>
-    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-        <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/其他/">其他</a>
-    </ul>
-    
-    <!-- Share -->
-    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-    <i class="material-icons" role="presentation">share</i>
-    <span class="visuallyhidden">share</span>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
-    
-    
-    
-    
-    
-    <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Chrome浏览器host配置&url=http://Racaly.github.io//2016/10/13/host/index.html&via=Racaly" target="_blank">
-        <li class="mdl-menu__item">
-            分享到 Twitter
-        </li>
-    </a>
-    
-    <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=http://Racaly.github.io//2016/10/13/host/index.html" target="_blank">
-        <li class="mdl-menu__item">
-            分享到 Google+
-        </li>
-    </a>
-    
-    <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Chrome浏览器host配置&url=http://Racaly.github.io//2016/10/13/host/index.html&pic=&searchPic=false&style=simple" target="_blank">
-        <li class="mdl-menu__item">
-            分享到微博
-        </li>
-    </a>
-</ul>
-</div>
-				
-
-                <!-- Post Content -->
-                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-	
-		<h3 id="Chrome浏览器host配置"><a href="#Chrome浏览器host配置" class="headerlink" title="Chrome浏览器host配置"></a>Chrome浏览器host配置</h3><h4 id="一、host文件配置"><a href="#一、host文件配置" class="headerlink" title="一、host文件配置"></a>一、host文件配置</h4><h5 id="Windows平台"><a href="#Windows平台" class="headerlink" title="Windows平台"></a>Windows平台</h5><p>1.使用文本编辑器打开： %SystemRoot%\System32\drivers\etc\hosts<br>2.将 <a href="https://raw.githubusercontent.com/racaljk/hosts/master/hosts" target="_blank" rel="external">hosts</a> 全部内容复制到上面的文件内并保存</p>
-<h5 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h5><p>1.将 hosts 全部内容复制到/etc/hosts中并保存<br>2.或者在终端执行：<br><pre><code>wget https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;racaljk&#x2F;hosts&#x2F;master&#x2F;hosts -qO &#x2F;tmp&#x2F;hosts &amp;&amp; sudo sh -c &#39;cat &#x2F;tmp&#x2F;hosts &gt; &#x2F;etc&#x2F;hosts&#39; </code></pre></p>
-<h4 id="二、Chrome配置"><a href="#二、Chrome配置" class="headerlink" title="二、Chrome配置"></a>二、Chrome配置</h4><p>1.地址栏输入：<code>chrome://net-internals/#hsts</code>,回车<br>2.<code>Input a domain name to add it to the HSTS set:</code>这一行下面的<code>Domain: [ ]</code>输入<code>www.google.com.hk</code>点 <strong>Add</strong>按钮</p>
-<h4 id="三、重启浏览器"><a href="#三、重启浏览器" class="headerlink" title="三、重启浏览器"></a>三、重启浏览器</h4><p><a href="https://github.com/racaljk/hosts" target="_blank" rel="external">原文</a>及相关问题 请访问<code>https://github.com/racaljk/hosts</code></p>
-
-	
-	
-	
-	
-</div>
-				
-				
-
-                <!-- Post Comments -->
-                
-
-
-				
-
-            </div>
-
-            <!-- Post Prev & Next Nav -->
-            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-    
-    <!-- Prev Nav -->
-    
-
-    <!-- Section Spacer -->
-    <div class="section-spacer"></div>
-
-    <!-- Next Nav -->
-    
-        <a href="/2016/09/04/gitignore/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
-    
-</nav>
-        </div>
-    </div>
 
 				
 				

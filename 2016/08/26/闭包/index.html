@@ -60,26 +60,7 @@
 
     <style>
         body{
-            background-color: #F5F5F5
-        }
-		
-        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
-            background-color: #fff;
-        }
-		
-        #scheme-Paradox .MD-burger-layer {
-            background-color: #666;
-        }
-		
-        #scheme-Paradox .material-back{
-            color: #666;
-        }
-		
-        .material-layout .material-post>.material-nav,
-		.material-layout .material-index>.material-nav,
-        .material-nav a,
-        #scheme-Paradox .material-post_container .material-back{
-            color: #666;
+            background-image: url(/img/bg.png);
         }
     </style>
 
@@ -304,14 +285,41 @@
 	
 		<h3 id="Javascript闭包"><a href="#Javascript闭包" class="headerlink" title="Javascript闭包"></a>Javascript闭包</h3><p>闭包是指能够访问自由变量的函数 (变量在本地使用，但在闭包中定义)。换句话说，定义在闭包中的函数可以“记忆”它被创建时候的环境。</p>
 <p><strong>先看下面这个函数</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> city = <span class="string">"西安"</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getCity</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(city);</div><div class="line">  &#125;</div><div class="line">  getCity();</div><div class="line">&#125;</div><div class="line">foo();<span class="comment">//控制台输出'西安'</span></div></pre></td></tr></table></figure>
+<pre><code>function foo() {
+  var city = &quot;西安&quot;;
+  function getCity() {
+    console.log(city);
+  }
+  getCity();
+}
+foo();&#x2F;&#x2F;控制台输出&#39;西安&#39;</code></pre>
 <p>函数 foo() 创建了一个局部变量 city，然后定义了名为 getCity() 的函数。 getCity() 是一个内部函数——定义于 foo() 之内且仅在该函数体内可用。getCity() 没有任何自己的局部变量，然而它可以访问到外部函数的变量，即可以使用父函数中声明的 city 变量。</p>
-<h4 id="一、闭包"><a href="#一、闭包" class="headerlink" title="一、闭包"></a>一、闭包</h4><p><strong>再看这样一个函数</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> city = <span class="string">"西安"</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getCity</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(city);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> getCity;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> foo2 = foo1();</div><div class="line">foo2();<span class="comment">//控制台输出西安</span></div></pre></td></tr></table></figure></p>
+<h4 id="一、闭包"><a href="#一、闭包" class="headerlink" title="一、闭包"></a>一、闭包</h4><p><strong>再看这样一个函数</strong><br><pre><code>function foo1() {
+  var city = &quot;西安&quot;;
+  function getCity() {
+    console.log(city);
+  }
+  return getCity;
+}
+
+var foo2 = foo1();
+foo2();&#x2F;&#x2F;控制台输出西安</code></pre></p>
 <p> 运行这段代码的效果和之前的 foo() 示例完全一样：字符串 “西安” 将被显示在一个 控制台中。其中的不同也是有意思的地方在于 getCity()内部函数在执行前被从其外围函数foo1中返回了。</p>
 <p>这段代码看起来别扭却能正常运行。通常，函数中的局部变量仅在函数的执行期间可用。一旦foo1()执行过后，我们会很合理的认为 city变量将不再可用。虽然代码运行的没问题，但实际并不是这样的。</p>
 <p>这个谜题的答案是foo1变成一个闭包了。闭包是一种特殊的对象。它由两部分构成：函数，以及创建该函数的环境。环境由闭包创建时在作用域中的任何局部变量组成。在我们的例子中，foo1是一个闭包，由getCity函数和闭包创建时存在的”西安”字符串形成。</p>
 <p>下面是一个更有意思的示例 — makeAdder 函数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAdder</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x + y;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> add5 = makeAdder(<span class="number">5</span>);</div><div class="line"><span class="keyword">var</span> add10 = makeAdder(<span class="number">10</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(add5(<span class="number">2</span>));  <span class="comment">// 7</span></div><div class="line"><span class="built_in">console</span>.log(add10(<span class="number">2</span>)); <span class="comment">// 12</span></div></pre></td></tr></table></figure>
+<pre><code>
+function makeAdder(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+var add5 = makeAdder(5);
+var add10 = makeAdder(10);
+
+console.log(add5(2));  &#x2F;&#x2F; 7
+console.log(add10(2)); &#x2F;&#x2F; 12</code></pre>
 <p>在这个示例中，我们定义了 makeAdder(x) 函数：带有一个参数 x 并返回一个新的函数。返回的函数带有一个参数 y，并返回 x 和 y 的和。</p>
 <p>从本质上讲，makeAdder 是一个函数工厂 — 创建将指定的值和它的参数求和的函数，在上面的示例中，我们使用函数工厂创建了两个新函数 — 一个将其参数和 5 求和，另一个和 10 求和。</p>
 <p>add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存了不同的环境。在 add5 的环境中，x 为 5。而在 add10 中，x 则为 10。</p>
@@ -434,7 +442,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        174821793@qq.com
         <b class="caret"></b>
     </a>
 </div>
@@ -496,6 +504,12 @@
 		<li>
 			<a href="/about" title="about">
 				关于
+			</a>
+		</li>
+	
+		<li>
+			<a href="/tags" title="tags">
+				标签云
 			</a>
 		</li>
 	
